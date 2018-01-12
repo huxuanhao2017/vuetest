@@ -3,13 +3,16 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import About from '@/components/About'
 import Food from '@/view/Food'
-
+import Goods from '@/components/goods/goods'
+import Ratings from '@/components/ratings/ratings'
+import Sells from '@/components/sells/sells'
+import '../assets/styles/index.styl'
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/helloWorld',
       name: 'HelloWorld',
       component: HelloWorld,
       meta: {
@@ -30,6 +33,30 @@ export default new Router({
       component: Food,
       meta: {
         title: 'food'
+      }
+    },
+    {
+      path: '/goods',
+      name: 'Goods',
+      component: Goods,
+      meta: {
+        title: 'goods'
+      }
+    },
+    {
+      path: '/ratings',
+      name: 'Ratings',
+      component: Ratings,
+      meta: {
+        title: 'ratings'
+      }
+    },
+    {
+      path: '/sells',
+      name: 'Sells',
+      component: Sells,
+      meta: {
+        title: 'sells'
       }
     }
   ]
