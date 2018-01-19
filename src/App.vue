@@ -1,8 +1,7 @@
 <template>
   <div id="app">
-    <!--<img src="./assets/logo.png">-->
-    <v-header></v-header>
-    <div class="tab border-1px" >
+    <v-header :seller="seller"></v-header>
+    <div class="tab border-1px">
       <div class="tab-item">
         <router-link to="/goods">商品</router-link>
       </div>
@@ -20,15 +19,30 @@
 <script>
   import header from './components/header/header'
 
+  const ERR_OK = 0
   export default {
     name: 'app',
     components: {
       'v-header': header
+    },
+    data() {
+      return {
+        seller: {}
+      }
+    },
+    created() {
+      this.$http.get('/api/seller').then((response) => {
+        if (response.body.errno === ERR_OK) {
+          this.seller = response.body.data
+          console.log(this.seller)
+        }
+      })
     }
   }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
   @import "assets/styles/mixian.styl";
+
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;

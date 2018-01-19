@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import VueResource from 'vue-resource'
 import HelloWorld from '@/components/HelloWorld'
 import About from '@/components/About'
 import Food from '@/view/Food'
@@ -8,6 +9,7 @@ import Ratings from '@/components/ratings/ratings'
 import Sells from '@/components/sells/sells'
 import '../assets/styles/index.styl'
 Vue.use(Router)
+Vue.use(VueResource)
 
 export default new Router({
   routes: [
