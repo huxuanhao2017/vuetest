@@ -7,7 +7,8 @@ import Food from '@/view/Food'
 import Goods from '@/components/goods/goods'
 import Ratings from '@/components/ratings/ratings'
 import Sells from '@/components/sells/sells'
-import '../assets/styles/index.styl'
+import '../common/stylus/index.styl'
+
 Vue.use(Router)
 Vue.use(VueResource)
 
@@ -61,5 +62,6 @@ export default new Router({
         title: 'sells'
       }
     }
-  ]
+  ],
+  linkActiveClass: 'active'
 })

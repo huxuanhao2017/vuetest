@@ -34,45 +34,39 @@
       this.$http.get('/api/seller').then((response) => {
         if (response.body.errno === ERR_OK) {
           this.seller = response.body.data
-          console.log(this.seller)
         }
       })
     }
   }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
-  @import "assets/styles/mixian.styl";
+  @import "common/stylus/mixian.styl";
 
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-  }
+  /*#app */
+  /*font-family: 'Avenir', Helvetica, Arial, sans-serif*/
+  /*-webkit-font-smoothing: antialiased*/
+  /*-moz-osx-font-smoothing: grayscale*/
+  /*text-align: center*/
+  /*color: #2c3e50;*/
+  /*margin-top: 60px;*/
+  .tab
+    display: flex
+    width: 100%
+    height: 40px
+    line-height: 40px
+    // border-bottom: 1px solid rgba(7, 17, 27, 0.1)
+    border-1px(rgba(7, 17, 27, 0.1))
+    .tab-item
+      flex: 1
+      text-align: center
+      & > a
+        display: block
+        font-size: 28px
+        line-height :28px
+        color: rgb(77, 85, 93)
+        &.active
+          color: rgb(240, 20, 20)
 
-  .tab {
-    display: flex;
-    width: 100%;
-    line-height: 40px;
-    /*border-bottom: 1px solid rgba(7, 17, 27, 0.1);*/
-  border-1px(rgba(7, 17, 27, 0.1));
-  }
-
-  .tab-item {
-    flex: 1;
-    text-align: center;
-  }
-
-  a {
-    display: block;
-    text-decoration: none;
-    font-size: 14px;
-    color: rgb(77, 85, 93);
-  }
-
-  .router-link-active {
+  .router-link-exact-active
     color: rgb(240, 20, 20);
-  }
 </style>

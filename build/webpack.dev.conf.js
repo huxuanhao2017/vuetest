@@ -17,7 +17,6 @@ var seller = appData.seller//获取对应的本地数据
 var goods = appData.goods
 var ratings = appData.ratings
 var apiRoutes = express.Router()
-app.use('/api', apiRoutes)
 
 
 const HOST = process.env.HOST
