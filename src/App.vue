@@ -12,7 +12,7 @@
         <router-link to="/sells">商家</router-link>
       </div>
     </div>
-    <router-view></router-view>
+    <router-view :seller="seller"></router-view>
   </div>
 </template>
 
@@ -62,7 +62,7 @@
       & > a
         display: block
         font-size: 28px
-        line-height :28px
+        line-height: 28px
         color: rgb(77, 85, 93)
         &.active
           color: rgb(240, 20, 20)
