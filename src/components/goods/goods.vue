@@ -30,7 +30,7 @@
                                                                 v-show="food.oldPrice">￥{{food.oldPrice}}</span>
                 </div>
                 <div class="cartControl-wrapper">
-                  <cartcontrol :food="food"></cartcontrol>
+                  <cartcontrol @add="drop" :food="food"></cartcontrol>
                 </div>
               </div>
             </li>
@@ -38,28 +38,35 @@
         </li>
       </ul>
     </div>
-    <shopcart :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
+    <shopcart ref="shopcart" :select-foods="selectFoods" :delivery-price="seller.deliveryPrice"
+              :min-price="seller.minPrice"></shopcart>
+    <food :food="selectedFood"></food>
   </div>
 </template>
 <script>
   import BScroll from 'better-scroll'
   import Shopcart from '../shopcart/shopcart'
   import Cartcontrol from '../cartcontrol/cartcontrol'
+  import Food from '../food/food'
 
   const ERR_OK = 0
   export default {
-    components: {Shopcart, Cartcontrol},
+    components: {
+      Food,
+      Shopcart,
+      Cartcontrol
+    },
     props: {
       seller: {
         type: Object
-
       }
     },
     data() {
       return {
         goods: [],
         listHeight: [],
-        scrollY: 0
+        scrollY: 0,
+        selectedFood: {}
       }
     },
     computed: {
@@ -72,6 +79,17 @@
           }
         }
         return 0
+      },
+      selectFoods() {
+        let foods = []
+        this.goods.forEach((good) => {
+          good.foods.forEach(food => {
+            if (food.count) {
+              foods.push(food)
+            }
+          })
+        })
+        return foods
       }
     },
     created() {
@@ -99,7 +117,10 @@
         this.meunScroll = new BScroll(this.$refs.menuWrapper, {
           click: true
         })
-        this.foodsScroll = new BScroll(this.$refs.foodsWrapper, {probeType: 3})
+        this.foodsScroll = new BScroll(this.$refs.foodsWrapper, {
+          click: true,
+          probeType: 3
+        })
         this.foodsScroll.on('scroll', (pos) => {
           this.scrollY = Math.abs(Math.round(pos.y))
         })
@@ -113,6 +134,9 @@
           height += item.clientHeight
           this.listHeight.push(height)
         }
+      },
+      drop(target) {
+        this.$refs.shopcart.drop(target)
       }
     }
   }
@@ -220,4 +244,8 @@
               font-size: 10px
               color: rgb(147, 153, 159)
 
+          .cartControl-wrapper
+            position: absolute
+            right: 0
+            bottom: 12px
 </style>
