@@ -61,8 +61,7 @@
       text-align: center
       & > a
         display: block
-        font-size: 28px
-        line-height: 28px
+        font-size: 24px
         color: rgb(77, 85, 93)
         &.active
           color: rgb(240, 20, 20)

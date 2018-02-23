@@ -61,7 +61,8 @@ export default new Router({
       meta: {
         title: 'sells'
       }
-    }
+    },
+    {path: '/', redirect: '/goods'}
   ],
   linkActiveClass: 'active'
 })

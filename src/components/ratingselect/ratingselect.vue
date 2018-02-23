@@ -76,7 +76,7 @@
   }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
+<style lang="stylus" ref="stylesheet/stylus">
   @import "../../common/stylus/mixian.styl"
 
   .ratingselect
